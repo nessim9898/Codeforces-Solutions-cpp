@@ -1,0 +1,22 @@
+ #include <iostream>
+    #include <bits/stdc++.h>
+    using namespace std;
+    int t[100][100];
+    int t1[100][100];
+    bool checkr(int i,int m){for(int j=0 ;j<m ;j++){if (t[i][j]==0){return false;}}return true;}
+    bool checkl(int i,int n){for(int j=0 ;j<n ;j++){if (t[j][i]==0){return false;}}return true;}
+    int main()
+    {
+    int n,m,s=0,s1=0;
+    cin>>n>>m;
+    for (int i=0;i<n;i++){for(int j=0;j<m;j++){cin>>t[i][j];t1[i][j]=0;}}
+    for (int i=0;i<n;i++){for(int j=0;j<m;j++){
+            bool x=checkr(i,m),y=checkl(j,n);
+            if (t[i][j]==1){s1++;if ((x&&y) ==true){t1[i][j]=1;s++;}
+            else if ((x||y)==false){
+            cout<<"NO";return 0;}
+            }}}
+    if (s==0 && s1!=0){cout<<"NO";return 0;}
+    cout<<"YES"<<endl;
+    for (int i=0;i<n;i++){for(int j=0;j<m;j++){cout<<t1[i][j]<<" ";}cout<<endl;}
+    }
